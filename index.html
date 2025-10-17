@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enviro-Lytix: Carbon Footprint Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Prevents flash of incorrect theme
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            backgroundImage: {
+              "gradient-primary": "linear-gradient(to right, #3b82f6, #14b8a6)",
+            },
+            ringColor: {
+              primary: "#3b82f6",
+            },
+            ringOffsetColor: {
+              "background-light": "#f9fafb", // bg-gray-50
+              "background-dark": "#111827", // bg-gray-900
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
